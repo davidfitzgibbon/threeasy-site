@@ -1,0 +1,81 @@
+---	
+import Demo from '../components/Demo.svelte'
+import Page from '../layouts/Page.astro'
+---
+<Page title="Threeasy">
+	<h2>Why Threeasy?</h2>
+	<p>The learning curve for ThreeJS is quite steep. I'm a slow learner and it took me months to get to grips with it and it's concepts. Every tutorial has so many lines of config that there's too much for the learner to keep clear in their mind.</p>
+
+	<h2>How does Threeasy work?</h2>
+
+	<p>Threeasy is a wrapper around ThreeJS, attempting to ease the learning curve for the framework. It achieves this by tidying away and setting up advanced concepts like the <code>Scene</code>, <code>Carmera</code>, <code>Renderer</code>, and animations for you.</p>
+
+	<p>This lets the new learner focus on what's fun first, like setting up geometries and materials.</p>
+
+	<p>EG Here's everything you need to get a static cube on screen.</p>
+
+	<Demo title="Basic Threeasy App" url="focused-dream-itr9e"/>
+
+	<p>What we've done here is initialised a new instance of <code>Threeasy</code>. This immediately set up the following for you.</p>
+
+	<ul>
+		<li><code>Scene</code></li>
+		<li><code>Renderer</code></li>
+		<li><code>Camera</code></li>
+		<li><code>Light</code></li>
+		<li>Animation Loop</li>
+		<li>Loading Manager</li>
+		<li>Resizing watcher</li>
+	</ul>
+
+	<p>Then we set up a <code>material</code>, <code>geometry</code> and <code>mesh</code>, just like we normally would in ThreeJS. Then we add the mesh to the <code>Scene</code>, which is part of the <code>app</code> variable now.</p>
+
+	<h2>Inline Animations</h2>
+
+	<p>Most ThreeJS projects have an animation loop. These can get really complicated for a beginner, and fast. The main issue is that the setup code is verbose, with a cube buried amongst it. Then, separately in the animation loop, the cube is spun. This scattering of code is bad enough, but then there's no guarantee the next tutorial uses the same variable names. Is it <code>animate</code>, <code>render</code>, <code>loop</code>, <code>raf</code>?</p>
+
+	<p>Threeasy gets around this by letting you simply declare inline animations, beside the mesh or object that you're working on.</p>
+
+	<Demo title="Basic Threeasy Animation" url="basic-threeasy-animation-onstv"/>
+
+	<p>Here you can see that what we need to do to use an inline function is pass a function to <code>app.animatior.add()</code>.</p>
+
+	<p><code>app.animatior.add()</code> maintains an array of all of your animations, ready to execute them on every frame.</p>
+
+	<h2>Accessing top level ThreeJS variables, like <code>Scene</code>, <code>Camera</code> and <code>Renderer</code></h2>
+
+	<p>These variables are all still in place, there's just attached to the <code>app</code> variable.</p>
+
+	<p>EG to change the <code>Scene</code> background color from the default black, to <code>dodgerblue</code>, and to move the <code>Camera</code> back and up, you can access from the <code>app</code> variable and use them as normal.</p>
+
+	<Demo title="Accessing top level ThreeJS variables" url="threeasy-changing-scene-camera-objects-i4t05"/>
+
+	<p>Advanced users should <code>console.log(app)</code> and see what's going on under the hood.</p>
+
+	<h2>Importing Textures</h2>
+
+	<p>Threeasy automatically sets up a loading manager for you. All you need to do is pass a list of textures you want to <code>preload</code> as an object.</p>
+
+	<p>To use those functions you need to work inside of a function passed to <code>postload</code>.</p>
+
+	<Demo title="Import crate texture" url="threeasy-import-a-texture-bj44z"/>
+	
+	<p>There's a big trade-off here admittedly. I'm not sure that this is any less confusing than importing a texture in plain ThreeJS. However, it does avoid the awkward nesting issues of when / where to run a loader vs the animation loop.</p>
+
+	<h2>Importing models</h2>
+
+	<p>At present only GLTF is supported</p>
+
+	<p>To import a model you need to follow the same preload routine as with a texture. However, as with a regular ThreeJS project, we need to import the GLTFLoader. Passing this in the settings object to Threeasy will have it set up all your loading needs.</p>
+
+	<Demo title="Import trophy GLTF" url="threeasy-import-a-gltf-bphg2"/>
+
+	<h2>Using other ThreeJS functionality</h2>
+
+	<p>This is getting more advanced, but anything you can do with ThreeJS you can do with Threeasy, because Threeasy is just ThreeJS loaded a particular way.</p>
+
+	<p>For example if you wanted to use <code>OrbitControls</code>, you just need to instantiate them as normal, you just need to remember that the <code>Camera</code> and <code>Renderer</code> are on the <code>app</code> variable</p>.
+
+	<Demo title="Using OrbitControls" url="threeasy-orbitcontrols-gs029"/>
+
+</Page>
