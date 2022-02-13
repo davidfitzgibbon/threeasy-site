@@ -11,7 +11,20 @@ const {title} = Astro.props;
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <title>{title}</title>
+    
+				<title>{title} - Threeasy</title>
+
+			<meta name="description" content="A light wrapper around ThreeJS to make learning easier.">
+			<meta property="og:title" content="{title} - Threeasy">
+			<meta property="og:description" content="A light wrapper around ThreeJS to make learning easier.">
+			<meta property="og:image" content="https://threeasy.org/imgs/social.jpg">
+			<meta property="og:image:alt" content="A light wrapper around ThreeJS to make learning easier.">
+			<meta property="og:locale" content="en_IE">
+			<meta property="og:type" content="website">
+			<meta name="twitter:card" content="summary_large_image">
+			<meta property="og:url" content="https://threeasy.org/">
+			<link rel="canonical" href="https://threeasy.org/">
+
 		<link rel="stylesheet" href="/css/style.css">
 	</head>
 	<body>
