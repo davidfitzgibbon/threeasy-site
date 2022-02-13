@@ -4,7 +4,10 @@
 </script>
 
 <h3>{title}</h3>
-<iframe class="demo-iframe" src="https://codesandbox.io/embed/{url}?fontsize=14&hidenavigation=1&module=%2Fapp.js&theme=dark&view=editor"
+
+<slot />
+
+<iframe class="demo-iframe" src="https://codesandbox.io/embed/{url}?fontsize=14&hidenavigation=1&theme=dark&view=preview"
      style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
      title="Basic Threeasy"
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"

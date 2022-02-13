@@ -1,0 +1,44 @@
+---	
+import { Code, Markdown } from 'astro/components';
+import Demo from '../components/Demo.svelte';
+import Page from '../layouts/Page.astro';
+import Waypoint from '../components/Waypoint.svelte';
+---
+<Page title="Inline Animations">
+<Markdown>
+
+	Most ThreeJS projects have an animation loop. These can get really complicated for a beginner, and fast.
+
+  Typically there are about 20-30 lines of setup code that distract the user from the actual animation.
+
+  Also, the code to create your object, and the code to animate it are in different places. The new user needs to remember where the code related to their object is!
+  
+  There is also no convention around naming the animation function. Is it `animate`, `render`, `loop`, `raf`?
+
+	Threeasy gets around this by letting you simply declare inline animations, beside the mesh or object that you're working on using `app.animate()`.
+
+	`app.animate()` maintains an array of all of your animations, ready to execute them on every frame.
+
+	<Demo title="Basic Threeasy Animation" url="basic-threeasy-animation-onstv">
+    <Code code={`import * as THREE from "https://cdn.skypack.dev/three";
+import Threeasy from "https://cdn.skypack.dev/threeasy";
+
+const app = new Threeasy(THREE);
+
+const mat = new THREE.MeshBasicMaterial({ color: "white" });
+const geo = new THREE.BoxGeometry();
+
+const mesh = new THREE.Mesh(geo, mat);
+app.animate(() => (mesh.rotation.y += 0.01));
+
+app.scene.add(mesh);
+`} lang="js" />
+  </Demo>
+
+	
+</Markdown>
+<Waypoint 
+  prev={{url:'/',title:"Why Threeasy?"}}
+  next={{url:'/threeasy-components',title:"Threeasy Components"}}
+/>
+</Page>

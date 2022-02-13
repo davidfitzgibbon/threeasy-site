@@ -1,0 +1,43 @@
+---	
+import { Code, Markdown } from 'astro/components';
+import Demo from '../components/Demo.svelte';
+import Page from '../layouts/Page.astro';
+import Waypoint from '../components/Waypoint.svelte';
+
+---
+<Page title="Accessing top level ThreeJS variables">
+<Markdown>
+  Seasoned ThreeJS users might be wondering how to access top level ThreeJS variables, like `Scene`, `Camera` and `Renderer`.
+
+	These variables are all still in place, there's just attached to the `app` variable.
+
+	EG to change the `Scene` background color from the default black, to `dodgerblue`, and to move the `Camera` back and up, you can access from the `app` variable and use them as normal.
+
+	Advanced users should `console.log(app)` and see what's going on under the hood.
+
+	<Demo title="Accessing top level ThreeJS variables" url="threeasy-changing-scene-camera-objects-i4t05">
+    <Code code={`import * as THREE from "https://cdn.skypack.dev/three";
+import Threeasy from "https://cdn.skypack.dev/threeasy";
+
+const app = new Threeasy(THREE);
+app.scene.background = new THREE.Color("dodgerblue");
+app.camera.position.set(0, 2, 2);
+app.camera.lookAt(0, 0, 0);
+
+const mat = new THREE.MeshBasicMaterial({ color: "white" });
+const geo = new THREE.BoxGeometry();
+
+const mesh = new THREE.Mesh(geo, mat);
+app.animate(() => {
+  mesh.rotation.y += 0.01;
+});
+
+app.scene.add(mesh);
+`} lang="js" />
+  </Demo>
+	
+</Markdown>
+<Waypoint 
+  prev={{url:'/using-other-threejs-functionality',title:"Using other ThreeJS functionality"}}
+/>
+</Page>

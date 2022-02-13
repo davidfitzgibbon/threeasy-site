@@ -1,18 +1,19 @@
 <script>
-  const version = "0.1.1";
+  const version = "0.1.4";
 </script>
-<div class="logo">
-<img src="/imgs/threeasy.png" alt="Threeasy">
-<div class="details">
-<h1>Threeasy</h1>
-<h2>v0.1.1</h2>
-</div>
-</div>
+<a href="/" class="logo">
+  <img src="/imgs/threeasy.png" alt="Threeasy">
+  <div class="details">
+    <h1>Threeasy</h1>
+    <h2>v{version}</h2>
+  </div>
+</a>
 <style>
   .logo {
     position: absolute;
     top: 0;
     left: 1rem;
+    text-decoration: none;
   }
 
   .logo h1,
