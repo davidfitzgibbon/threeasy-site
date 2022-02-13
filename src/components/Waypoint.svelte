@@ -29,7 +29,7 @@
     grid-column-start: 2;
     grid-column-end: 4;
     display: grid;
-    grid-template-columns: repeat(2, max-content);
+    grid-template-columns: repeat(2, min-content);
     gap: 3rem;
     justify-content: space-between;
   }
