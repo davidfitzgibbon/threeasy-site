@@ -5,18 +5,16 @@ import Page from '../layouts/Page.astro';
 import Waypoint from '../components/Waypoint.svelte';
 ---
 <Page title="Threeasy">
-<Markdown>
-	## Why Threeasy?
 
-	The learning curve for ThreeJS is quite steep. It can take months to get to grips with it and its concepts. Threeasy aims to simplify the initial few weeks of getting used to ThreeJS's concepts, disclosing complexity at their own pace.
+<Markdown>
+	Threeasy is a wrapper around ThreeJS that lets you get set up fast, so you can get making things quicker!
 	
 	## How does Threeasy work?
 
-	Threeasy is a wrapper around ThreeJS, attempting to ease the learning curve for the framework. It achieves this by tidying away and setting up advanced concepts like the `Scene`, `Camera`, `Renderer`, and animations for you.
+	Threeasy wraps around ThreeJS doing all the boilerplate setup for you. It sets up and tidies away `Scene`, `Camera`, `Renderer`, and animations for you. That means that new users have less distractions as the learn, and advanced users can just get going quicker!
 
-	This lets the new learner focus on what's fun first, like setting up geometries and materials.
-
-	EG Here's everything you need to get a static cube on screen.
+	
+	How much quicker is it? Here's everything you need to get a static cube on screen.
 
 	<Demo title="Basic Threeasy App" url="focused-dream-itr9e">
 		
@@ -45,17 +43,8 @@ app.scene.add(mesh);`} lang="js" />
 		<li>Resizing watcher</li>
 	</ul>
 
-	Then we set up a `material`, `geometry` and `mesh`, just like we normally would in ThreeJS. Then we add the mesh to the `Scene`, which is part of the `app` variable now.
+	Then we set up a `material`, `geometry` and `mesh`, just like we normally would in ThreeJS. Then we add the mesh to the `Scene`, which has been passed to us by Threeast as part of the `app` variable.
 
-	
-
-	
-
-	
-
-	
-
-	
 </Markdown>
 <Waypoint 
   next={{url:'/inline-animations',title:"Inline Animations"}}
