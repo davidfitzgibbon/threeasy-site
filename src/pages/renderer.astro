@@ -1,0 +1,48 @@
+---	
+import { Code, Markdown } from 'astro/components';
+import Demo from '../components/Demo.svelte';
+import Page from '../layouts/Page.astro';
+
+---
+<Page title="Changing Renderer">
+<Markdown>
+
+	Threeasy automatically sets up the default `THREE Renderer` for you. But you're not limited to that, you can simply change it.
+
+  To update the function that is used to render the scene, you can pass a new function to `app.render`.
+
+	<Demo title="Import crate texture" url="threeasy-change-renderer-iq6rl2">
+  <Code code={`import * as THREE from "https://unpkg.com/three@0.125.1/build/three.module.js";
+import { EffectComposer } from "https://unpkg.com/three@0.125.1/examples/jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "https://unpkg.com/three@0.125.1/examples/jsm/postprocessing/RenderPass.js";
+import { ShaderPass } from "https://unpkg.com/three@0.125.1/examples/jsm/postprocessing/ShaderPass.js";
+import { DotScreenShader } from "https://unpkg.com/three@0.125.1/examples/jsm/shaders/DotScreenShader.js";
+import Threeasy from "https://cdn.skypack.dev/threeasy/build/threeasy.min.js";
+
+const app = new Threeasy(THREE);
+app.camera.position.set(0, 2, 2);
+app.camera.lookAt(0, 0, 0);
+
+const mat = new THREE.MeshNormalMaterial();
+const geo = new THREE.BoxGeometry();
+const mesh = new THREE.Mesh(geo, mat);
+
+const composer = new EffectComposer(app.renderer);
+composer.addPass(new RenderPass(app.scene, app.camera));
+
+const effect1 = new ShaderPass(DotScreenShader);
+effect1.uniforms["scale"].value = 4;
+composer.addPass(effect1);
+
+// THIS RESETS THE RENDERER AND ADDS IT TO THE RENDER LOOP
+app.render = () => composer.render();
+
+app.animate(() => {
+  mesh.rotation.y += 0.01;
+});
+
+app.scene.add(mesh);
+`} lang="js" />
+</Demo>
+	
+</Markdown>
