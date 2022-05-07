@@ -87,3 +87,6 @@ p code {
   border-radius: 0.25em;
   display: inline;
 }
+.bold {
+  font-weight: 900;
+}
