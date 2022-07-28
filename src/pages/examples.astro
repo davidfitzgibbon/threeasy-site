@@ -2,52 +2,57 @@
 import Page from '../layouts/Page.astro';
 
 const links = [
-    {
-      name: "Import a texture",
-      slug: "threeasy-import-a-texture-bj44z"
-    },
-    {
-      name: "Import a model - gltf",
-      slug: "threeasy-import-a-gltf-bphg2"
-    },
-    {
-      name: "Threeasy Component",
-      slug: "threeasy-components-wjn79"
-    },
-    {
-      name: "Motion Graphics I",
-      slug: "threeasy-motion-graphics-yfqj6"
-    },
-    {
-      name: "Motion Graphics II",
-      slug: "threeasy-motion-graphics-2-8wtgg"
-    },
-    {
-      name: "Swimming Fish",
-      slug: "threeasy-swimming-fish-mthrvm"
-    },
-    {
-      name: "Wriggle Loop",
-      slug: "wriggle-loop-wzz92u"
-    },
+  {
+    name: "Import a texture",
+    slug: "importing-textures"
+  },
+  {
+    name: "Import a model - gltf",
+    slug: "import-glb"
+  },
+  {
+    name: "Threeasy Component",
+    slug: "components"
+  },
+  {
+    name: "Motion Graphics I",
+    slug: "motion-graphics-1"
+  },
+  {
+    name: "Motion Graphics II",
+    slug: "motion-graphics-2"
+  },
+  {
+    name: "Cyberpunk",
+    slug: "cyberpunk"
+  },
+  {
+    name: "Swimming Fish",
+    slug: "swimming-fish"
+  },
+  {
+    name: "Wriggle Loop",
+    slug: "wriggleloop"
+  },
 ]
 ---
+
 <Page title="Examples">
   {links.map(link => {
-      const src = `imgs/examples/${link.slug}.png`;
-      const url = `https://codesandbox.io/s/${link.slug}?file=/app.js`
-      return (
-        <p>
-        <a href={url} target="_blank">
-          <img src={src} alt={link.name} />
-          {link.name}</a>
-        </p>
-      )
+  const src = `imgs/examples/${link.slug}.jpeg`;
+  const url = `examples/${link.slug}/`
+  return (
+  <p>
+    <a href={url} target="_blank">
+      <img src={src} alt={link.name} />
+      {link.name}</a>
+  </p>
+  )
   })}
 </Page>
 
 <style>
-img {
-  width:100%;
-}
+  img {
+    width: 100%;
+  }
 </style>

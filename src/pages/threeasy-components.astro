@@ -4,18 +4,7 @@ import Demo from '../components/Demo.svelte';
 import Page from '../layouts/Page.astro';
 import Waypoint from '../components/Waypoint.svelte';
 
----
-<Page title="Threeasy Components">
-<Markdown>
-  ThreeJS has no prescribed method of organising components. As a result, most demos dont use components. This makes most complicated demos very hard to read, because everything is competing with scope in one file.
-
-	Threeasy has a simple but opinionated `Component`. It encourages splitting functionality into separeate files. This is how coding in the real world works.
-
-  The Threeasy `Component` is a class. In the `constructor` you can set the basic state of an object. It also exposes an `animate()` function that is automatically hooked up to the render loop for you.
-
-  Here is the most basic setup:
-
-  <Code code={`import * as THREE from "https://unpkg.com/three@0.125.1/build/three.module.js";
+const code1 = `import * as THREE from "https://unpkg.com/three@0.125.1/build/three.module.js";
 import ThreeasyComponent from "https://unpkg.com/threeasy@0.1.3/component.js";
 
 export default class Box extends ThreeasyComponent {
@@ -27,28 +16,16 @@ export default class Box extends ThreeasyComponent {
     // animate
   }
 }
-`} lang="js" />
-
-  In App.js when you want to use the `Component`, you must pass the `app` to it.
-
-  <Code code={`import myComponent from '/myComponent.js';
+`
+const code2 = `import myComponent from '/myComponent.js';
 const instance = new myComponent(app);
-`} lang="js" />
-
-  ## Example
-
-	In this example a Box is created and animated. By storing the Box in its own file, things are much more legible, and easier for a newcomer to understand.
-
-  
-
-
-	<Demo title="Threeasy Components" url="threeasy-components-wjn79">
-    <Code code={`// APP.JS
+`
+const code3 = `// APP.JS
 
 import * as THREE from "https://unpkg.com/three@0.125.1/build/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.125.1/examples/jsm/controls/OrbitControls";
 
-import Threeasy from "https://cdn.skypack.dev/threeasy/build/threeasy.min.js";
+import Threeasy from "threeasy";
 import Box from "./box.js";
 
 const app = new Threeasy(THREE);
@@ -61,8 +38,8 @@ const boxes = [];
 for (let i = 0; i < 20; i++) {
   boxes.push(new Box(app));
 }
-`} lang="js" />
-<Code code={`// BOX.JS
+`
+const code4 = `// BOX.JS
 
 import * as THREE from "https://unpkg.com/three@0.125.1/build/three.module.js";
 import ThreeasyComponent from "https://unpkg.com/threeasy@0.1.3/component.js";
@@ -92,7 +69,33 @@ export default class Box extends ThreeasyComponent {
     this.mesh.rotation.y += this.dir.y;
   }
 }
-`} lang="js" />
+`
+---
+
+
+<Page title="Threeasy Components">
+<Markdown>
+  ThreeJS has no prescribed method of organising components. As a result, most demos dont use components. This makes most complicated demos very hard to read, because everything is competing with scope in one file.
+
+	Threeasy has a simple but opinionated `Component`. It encourages splitting functionality into separeate files. This is how coding in the real world works.
+
+  The Threeasy `Component` is a class. In the `constructor` you can set the basic state of an object. It also exposes an `animate()` function that is automatically hooked up to the render loop for you.
+
+  Here is the most basic setup:
+
+  <Code code={code1} lang="js" />
+
+  In App.js when you want to use the `Component`, you must pass the `app` to it.
+
+  <Code code={code2} lang="js" />
+
+  ## Example
+
+	In this example a Box is created and animated. By storing the Box in its own file, things are much more legible, and easier for a newcomer to understand.
+
+	<Demo title="Threeasy Components" url="components">
+    <Code code={code3} lang="js" />
+    <Code code={code4} lang="js" />
   </Demo>
 	
 </Markdown>

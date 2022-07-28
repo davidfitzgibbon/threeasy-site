@@ -1,0 +1,25 @@
+---	
+import Example from '../../layouts/Example.astro';
+---
+
+<Example title="Change Scene, Camera objects">
+  <script type="module">
+    import * as THREE from "three";
+    import Threeasy from "threeasy";
+
+    const app = new Threeasy(THREE);
+    app.scene.background = new THREE.Color("dodgerblue");
+    app.camera.position.set(0, 2, 2);
+    app.camera.lookAt(0, 0, 0);
+
+    const mat = new THREE.MeshBasicMaterial({ color: "white" });
+    const geo = new THREE.BoxGeometry();
+
+    const mesh = new THREE.Mesh(geo, mat);
+    app.animate(() => {
+      mesh.rotation.y += 0.01;
+    });
+
+    app.scene.add(mesh);
+  </script>
+</Example>
