@@ -1,13 +1,12 @@
-// Full Astro Configuration API Documentation:
-// https://docs.astro.build/reference/configuration-reference
+import svelte from "@astrojs/svelte"; // @ts-check
 
-// @type-check enabled!
-// VSCode and other TypeScript-enabled text editors will provide auto-completion,
-// helpful tooltips, and warnings if your exported object is invalid.
-// You can disable this by removing "@ts-check" and `@type` comments below.
+import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
 
-// @ts-check
-export default /** @type {import('astro').AstroUserConfig} */ ({
-	// Enable the Svelte renderer to support Svelte components.
-	renderers: ['@astrojs/renderer-svelte'],
+// https://astro.build/config
+export default defineConfig(
+/** @type {import('astro').AstroUserConfig} */
+{
+  // Enable the Svelte renderer to support Svelte components.
+  integrations: [svelte(), mdx()]
 });
