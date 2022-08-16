@@ -2,6 +2,11 @@
 import { Code } from 'astro/components';
 import Markdown from '@astrojs/markdown-component';
 import Page from '../layouts/Page.astro';
+
+const command = `degit davidfitzgibbon/starterThreeasy myProject
+cd myProject
+npm i
+npm start`
 ---
 
 <Page title="Quick Start">
@@ -13,7 +18,7 @@ import Page from '../layouts/Page.astro';
     ## Locally
     Or if you want to work locally, here's all you need to get up and running with Threeasy.
 
-    <Code code={`degit davidfitzgibbon/starterThreeasy myProject cd myProject npm start`} lang="bash" />
+    <Code code={command} lang="bash" />
 
   </Markdown>
 </Page>
