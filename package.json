@@ -15,5 +15,10 @@
     "@astrojs/svelte": "^0.5.1",
     "astro": "^1.0.0-rc.2",
     "fs-extra": "^10.1.0"
+  },
+  "dependencies": {
+    "gsap": "^3.11.0",
+    "three": "^0.143.0",
+    "threeasy": "^0.1.11"
   }
 }
